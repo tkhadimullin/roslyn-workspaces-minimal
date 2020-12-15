@@ -8,7 +8,7 @@ namespace NUnitTestProject1
         [Test]
         public void Test1()
         {
-            var provider = new RoslynProjectProvider(@"..\..\ConsoleApp1\ConsoleApp1.sln", "ConsoleApp1");
+            var provider = new RoslynProjectProvider(@"..\..\..\..\test-.net5-app\ConsoleApp1\ConsoleApp1.sln", "ConsoleApp1");
 
             var classes = provider.Classes;
         }
