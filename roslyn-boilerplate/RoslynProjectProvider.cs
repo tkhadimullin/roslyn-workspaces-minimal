@@ -2,6 +2,7 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.MSBuild;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,8 @@ namespace RoslynBoilerplate {
             {
                 if (_Workspace == null)
                 {
-                    MSBuildLocator.RegisterDefaults();
+                    var path = "C:\\Program Files\\dotnet\\sdk\\3.1.404";                    
+                    MSBuildLocator.RegisterMSBuildPath(path);
                     _Workspace = MSBuildWorkspace.Create();
 
                 }
@@ -48,7 +50,7 @@ namespace RoslynBoilerplate {
                     _Solution = Workspace.OpenSolutionAsync(PathToSolution).Result;
 
                     if (Workspace.Diagnostics.Count > 0)
-                    {
+                    { 
                         StringBuilder sb = new StringBuilder();
 
                         foreach (var diagnostic in Workspace.Diagnostics)
